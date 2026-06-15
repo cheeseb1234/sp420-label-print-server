@@ -18,6 +18,7 @@ Any device ──IPP──→ Pi (CUPS) ──TSPL──→ iDPRT SP420 via USB
 - **Configurable** — label size, print speed, density, gap sensor via YAML config
 - **One-command setup** — `curl | sudo bash`
 - **Windows support** via IPP or raw TCP socket bridge
+- **Fast** — prints in ~3 seconds from tapping Print (1.2s CPU + 2s printer)
 
 ## Hardware
 
@@ -132,12 +133,12 @@ sudo systemctl restart cups
 1. **Client** sends a PDF via IPP (Internet Printing Protocol) to CUPS on the Pi
 2. **CUPS** queues the job and passes the PDF to the custom backend
 3. **Backend** (`label-thermal.py`):
-   - Renders the PDF at 203 DPI using `pdftoppm` (Poppler)
-   - Converts to 1-bit monochrome via Pillow
-   - Rotates landscape→portrait for 4×6 label stock
-   - Packs pixels into TSPL BITMAP command (Strategy A: white→bit=1, mode=1)
+   - Renders the PDF at 203 DPI as 1-bit PBM via `pdftoppm -mono`
+   - Opens with Pillow and rotates landscape→portrait for 4×6 stock
+   - **Packs pixels in 0.0002s** using `img.tobytes()` (no Python iteration loop)
    - Writes raw TSPL data to `/dev/usb/lp0`
-4. **iDPRT SP420** receives the TSPL command and prints the label
+4. **iDPRT SP420** receives the TSPL command and starts printing
+   **Total: ~1.2s CPU + ~2s printer = ~3.2s end-to-end**
 
 Everything runs locally on the Pi — **no cloud services, no API tokens, no ongoing costs**.
 
