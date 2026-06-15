@@ -1,0 +1,62 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*Manufacturer: "iDPRT"
+*ModelName: "iDPRT SP420"
+*ShortNickName: "iDPRT SP420 4x6 Label"
+*NickName: "iDPRT SP420 Thermal Label Printer 4x6"
+*PSVersion: "(3010) 0"
+*LanguageLevel: "2"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*VariablePaperSize: True
+*MaxMediaWidth: 288
+*MaxMediaHeight: 432
+*NonUIOrderDependency: 0 AnySetup *CustomPageSize
+*CustomPageSize True: "pop pop pop pop"
+*PageSize 4x6Label: "4x6Label 288 432"
+*PageSize 4x6Landscape: "4x6Landscape 432 288"
+*DefaultPageSize: 4x6Label
+*PageRegion 4x6Label: "4x6Label 288 432"
+*PageRegion 4x6Landscape: "4x6Landscape 432 288"
+*DefaultPageRegion: 4x6Label
+*ImageableArea 4x6Label: "0 0 288 432"
+*ImageableArea 4x6Landscape: "0 0 432 288"
+*DefaultImageableArea: 4x6Label
+*PaperDimension 4x6Label: "288 432"
+*PaperDimension 4x6Landscape: "432 288"
+*DefaultPaperDimension: 4x6Label
+*HWMargins: 0 0 0 0
+*DefaultHWMargins: 0 0 0 0
+*cupsFilter: "application/pdf 0 -"
+*cupsModelNumber: 1
+*cupsManualCopies: False
+*cupsColorModel: Gray
+*cupsIPPFaxOut: False
+*cupsSNMPSupplies: False
+*cupsSingleFile: True
+*OpenUI *PageSize: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: 4x6Label
+*PageSize 4x6Label: "4x6Label 288 432"
+*CloseUI: *PageSize
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: 4x6Label
+*PageRegion 4x6Label: "4x6Label 288 432"
+*CloseUI: *PageRegion
+*OpenUI *Resolution: PickOne
+*OrderDependency: 10 AnySetup *Resolution
+*DefaultResolution: 203dpi
+*Resolution 203dpi: "203 dpi"
+*CloseUI: *Resolution
+*OpenUI *MediaType: PickOne
+*OrderDependency: 10 AnySetup *MediaType
+*DefaultMediaType: Labels
+*MediaType Labels: "Thermal Labels 4x6"
+*CloseUI: *MediaType

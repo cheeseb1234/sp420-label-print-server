@@ -1,0 +1,25 @@
+# SP420 Thermal Label Printer — Configuration
+# This file is read by the CUPS backend at /usr/lib/cups/backend/label-thermal
+
+# Printer connection
+device: /dev/usb/lp0
+
+# Label dimensions (at 203 DPI)
+label_width_mm: 101.6    # 4 inches
+label_height_mm: 152.4   # 6 inches
+dpi: 203
+
+# TSPL printer settings (lock these on the printer via Windows utility)
+gap_mm: 3
+speed: 4
+density: 8
+direction: 1
+reference: [0, 0]
+
+# Label gap sensor: "gap" for die-cut labels, "bline" for black-mark
+media_sensor: gap
+black_mark_offset: 0
+
+# Packing strategy: A (white->bit=1, mode=1) or B (black->bit=1, mode=0)
+# Strategy A is the default and matches the verified working configuration
+packing_strategy: A
